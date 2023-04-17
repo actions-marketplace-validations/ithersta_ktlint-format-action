@@ -1,0 +1,18 @@
+name: Run ktlint auto-format
+description: Apply linter fixes automatically
+
+inputs:
+  github_token:
+    description: 'GITHUB_TOKEN'
+    required: true
+  ktlint_version:
+    description: Defines the ktlint version to use
+    required: false
+    default: 'latest'
+
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+    - ${{ inputs.github_token }}
+    - ${{ inputs.ktlint_version }}
